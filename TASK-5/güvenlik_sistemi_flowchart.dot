@@ -1,0 +1,39 @@
+digraph SmartHomeSecuritySystem {
+    rankdir=LR;  // Sol'dan sağa doğru akış
+
+    // Düğüm tanımlamaları
+    Start [label="Başla" shape=ellipse, style=filled, fillcolor=lightblue];
+    ReadSensors [label="Sensörlerden Veri Oku" shape=box];
+    FilterReadings [label="Sensör Verilerini Filtrele" shape=box];
+    DetermineThreat [label="Tehdit Seviyesi Belirle" shape=box];
+    NoThreat [label="Tehdit Yok" shape=diamond];
+    LowThreat [label="Düşük Tehdit" shape=diamond];
+    MediumHighThreat [label="Orta/Yüksek Tehdit" shape=diamond];
+    TriggerAlarm [label="Alarmı Başlat" shape=box];
+    SendNotification [label="Bildirim Gönder" shape=box];
+    ResetAlarm [label="Alarm Sıfırlama" shape=diamond];
+    End [label="Bitir" shape=ellipse, style=filled, fillcolor=lightblue];
+    
+    // Bağlantılar (akışlar)
+    Start -> ReadSensors;
+    ReadSensors -> FilterReadings;
+    FilterReadings -> DetermineThreat;
+
+    // Tehdit seviyesi
+    DetermineThreat -> NoThreat [label="Tehdit Yok"];
+    NoThreat -> LowThreat [label="Düşük Tehdit"];
+    LowThreat -> SendNotification;
+    SendNotification -> End;
+
+    DetermineThreat -> MediumHighThreat [label="Orta/Yüksek Tehdit"];
+    MediumHighThreat -> TriggerAlarm;
+    TriggerAlarm -> SendNotification;
+    SendNotification -> End;
+
+    // Alarm sıfırlama
+    TriggerAlarm -> ResetAlarm [label="Alarm Aktif"];
+    ResetAlarm -> End [label="Sıfırlama Komutu"];
+    
+    // Ekleme: sürekli döngü
+    End -> Start [label="Döngü Devam Et"];
+}
