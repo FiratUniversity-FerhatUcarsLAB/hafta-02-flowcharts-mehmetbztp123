@@ -1,0 +1,89 @@
+digraph E_Ticaret_Sistemi {
+  rankdir=TB;
+  node [shape=box, style=rounded];
+
+  // Kullanıcı Girişi
+  start [label="BASLA\nKullanıcı Girişi", shape=oval];
+  login_check [label="EGER Kullanıcı Girişi Yapıldı mı?"];
+  load_user [label="Kullanıcı Bilgilerini Getir"];
+  guest [label="Misafir Alışverişine İzin Ver"];
+  
+  // Ürün Ekleme ve Stok Kontrol
+  product_loop_start [label="DONG Kullanıcı Ürün Eklemek İstiyor mu?"];
+  select_product [label="Ürün Seç"];
+  stock_check [label="EGER Stokta Var mı?"];
+  add_to_cart [label="Sepete Ekle"];
+  out_of_stock [label="Uyarı: Stokta Ürün Yok"];
+  
+  // İndirim Kodu
+  discount_check [label="EGER İndirim Kodu Girildi mi?"];
+  discount_valid [label="EGER İndirim Kodu Geçerli mi?"];
+  apply_discount [label="İndirimi Sepete Uygula"];
+  discount_invalid [label="Uyarı: İndirim Kodu Geçersiz"];
+  
+  // Kargo Hesaplama
+  get_address [label="Teslimat Adresini Al"];
+  calculate_shipping [label="Kargo Ücretini Hesapla"];
+  add_shipping [label="Kargoyu Sepete Ekle"];
+  
+  // Ödeme Aşamaları
+  cart_not_empty [label="EGER Sepet Boş Değil mi?"];
+  select_payment [label="Ödeme Yöntemini Seç"];
+  enter_payment_info [label="Ödeme Bilgilerini Gir"];
+  payment_valid [label="EGER Ödeme Bilgileri Geçerli mi?"];
+  process_payment [label="Ödeme Yap"];
+  payment_success [label="EGER Ödeme Başarılı mı?"];
+  save_order [label="Siparişi Kaydet"];
+  update_stock [label="Stokları Güncelle"];
+  show_confirmation [label="Sipariş Onayı Göster"];
+  payment_failed [label="Uyarı: Ödeme Başarısız"];
+  invalid_payment_info [label="Uyarı: Geçersiz Ödeme Bilgileri"];
+  empty_cart_warning [label="Uyarı: Sepet Boş"];
+
+  end [label="BİTİR", shape=oval];
+
+  // Bağlantılar
+  start -> login_check;
+  login_check -> load_user [label="Evet"];
+  login_check -> guest [label="Hayır"];
+  load_user -> product_loop_start;
+  guest -> product_loop_start;
+
+  product_loop_start -> select_product [label="Evet"];
+  product_loop_start -> discount_check [label="Hayır"];
+
+  select_product -> stock_check;
+  stock_check -> add_to_cart [label="Evet"];
+  stock_check -> out_of_stock [label="Hayır"];
+  add_to_cart -> product_loop_start;
+  out_of_stock -> product_loop_start;
+
+  discount_check -> discount_valid [label="Evet"];
+  discount_check -> get_address [label="Hayır"];
+
+  discount_valid -> apply_discount;
+  apply_discount -> get_address;
+  discount_valid -> discount_invalid [label="Hayır"];
+  discount_invalid -> get_address;
+
+  get_address -> calculate_shipping -> add_shipping -> cart_not_empty;
+
+  cart_not_empty -> select_payment [label="Evet"];
+  cart_not_empty -> empty_cart_warning [label="Hayır"];
+
+  select_payment -> enter_payment_info -> payment_valid;
+
+  payment_valid -> process_payment [label="Evet"];
+  payment_valid -> invalid_payment_info [label="Hayır"];
+
+  process_payment -> payment_success;
+
+  payment_success -> save_order [label="Evet"];
+  payment_success -> payment_failed [label="Hayır"];
+
+  save_order -> update_stock -> show_confirmation -> end;
+
+  empty_cart_warning -> end;
+  invalid_payment_info -> end;
+  payment_failed -> end;
+}
