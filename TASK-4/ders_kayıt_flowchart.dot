@@ -1,0 +1,81 @@
+digraph DersKayitSistemi {
+    rankdir=TB;
+    node [shape=rectangle, style=filled, fillcolor=lightgray];
+
+    Start [label="Başla"];
+    Login [label="Giriş: Öğrenci No + Şifre"];
+    
+    CheckLogin [label="Giriş Bilgileri Doğru mu?", shape=diamond, fillcolor=lightblue];
+    LoginFailed [label="Giriş Başarısız\nTekrar Dene"];
+    ShowCourses [label="Ders Listesini Göster"];
+    InitVars [label="SEÇİLEN_DERSLER ← boş\nTOPLAM_KREDİ ← 0"];
+    
+    SelectCourse [label="Ders Seçimi veya Çıkarma"];
+    AlreadySelected [label="Ders Daha Önce Seçilmiş mi?", shape=diamond, fillcolor=lightblue];
+    RemoveCourse [label="Dersi Çıkar\nKredi Güncelle"];
+
+    Kontenjan [label="Kontenjan Uygun mu?", shape=diamond, fillcolor=lightblue];
+    OnKosul [label="Ön Koşul Geçildi mi?", shape=diamond, fillcolor=lightblue];
+    ZamanCakisma [label="Zaman Çakışması Var mı?", shape=diamond, fillcolor=lightblue];
+    KrediLimiti [label="Kredi Limiti Aşılıyor mu?", shape=diamond, fillcolor=lightblue];
+    
+    AddCourse [label="Dersi Ekle\nKredi Güncelle"];
+    
+    ShowSummary [label="Kayıt Özeti Göster"];
+    CheckGPA [label="GPA < 2.5 mi?", shape=diamond, fillcolor=lightblue];
+    DanismanOnay [label="Danışman Onayı Alındı mı?", shape=diamond, fillcolor=lightblue];
+    KayıtReddedildi [label="Kayıt Başarısız\nDanışman Onayı Gerekli"];
+    
+    KayitOnay [label="Öğrenci Kaydı Onayladı mı?", shape=diamond, fillcolor=lightblue];
+    KayitTamam [label="Kayıt Tamamlandı"];
+    KayitIptal [label="Kayıt İptal Edildi"];
+
+    End [label="Bitiş"];
+
+    // Akış bağlantıları
+    Start -> Login;
+    Login -> CheckLogin;
+    CheckLogin -> LoginFailed [label="Hayır"];
+    LoginFailed -> Login;
+
+    CheckLogin -> ShowCourses [label="Evet"];
+    ShowCourses -> InitVars;
+    InitVars -> SelectCourse;
+
+    SelectCourse -> AlreadySelected;
+    AlreadySelected -> RemoveCourse [label="Evet"];
+    RemoveCourse -> SelectCourse;
+
+    AlreadySelected -> Kontenjan [label="Hayır"];
+    Kontenjan -> OnKosul [label="Evet"];
+    Kontenjan -> SelectCourse [label="Hayır"];
+
+    OnKosul -> ZamanCakisma [label="Evet"];
+    OnKosul -> SelectCourse [label="Hayır"];
+
+    ZamanCakisma -> KrediLimiti [label="Hayır"];
+    ZamanCakisma -> SelectCourse [label="Evet"];
+
+    KrediLimiti -> AddCourse [label="Hayır"];
+    KrediLimiti -> SelectCourse [label="Evet"];
+
+    AddCourse -> SelectCourse;
+
+    // Kayıt özeti ve kontrol
+    SelectCourse -> ShowSummary [label="Kayıt Bitir"];
+
+    ShowSummary -> CheckGPA;
+    CheckGPA -> DanismanOnay [label="Evet"];
+    CheckGPA -> KayitOnay [label="Hayır"];
+
+    DanismanOnay -> KayıtReddedildi [label="Hayır"];
+    DanismanOnay -> KayitOnay [label="Evet"];
+
+    KayıtReddedildi -> End;
+
+    KayitOnay -> KayitTamam [label="Evet"];
+    KayitOnay -> KayitIptal [label="Hayır"];
+
+    KayitTamam -> End;
+    KayitIptal -> End;
+}
