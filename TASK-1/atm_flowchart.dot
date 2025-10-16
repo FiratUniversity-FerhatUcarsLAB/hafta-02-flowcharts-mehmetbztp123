@@ -1,0 +1,51 @@
+digraph ATM_Para_Cekme {
+
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightyellow];
+
+    Start [label="BAŞLA", shape=oval, fillcolor=lightgreen];
+    PinPrompt [label="PIN giriniz (3 hak)"];
+    CheckPin [label="PIN doğru mu?", shape=diamond];
+    WrongPin [label="Hak azalt\nTekrar PIN sor"];
+    BlockCard [label="Kart bloke edildi", shape=box, fillcolor=lightcoral];
+    ExitBlocked [label="ÇIKIŞ", shape=oval, fillcolor=gray];
+
+    EnterAmount [label="Tutar giriniz (20 TL ve katı)"];
+    CheckAmountValid [label="Geçerli tutar mı?\n(>0 ve 20'ye tam bölünüyor?)", shape=diamond];
+    CheckBalance [label="Bakiye yeterli mi?", shape=diamond];
+    CheckLimit [label="Günlük limit aşılıyor mu?", shape=diamond];
+    Confirm [label="İşlemi onaylıyor musunuz?", shape=diamond];
+    Withdraw [label="Para ver\nBakiye ve limit güncelle"];
+    Cancelled [label="İşlem iptal edildi"];
+    AskRepeat [label="Yeni işlem yapmak ister misiniz?", shape=diamond];
+    Exit [label="ÇIKIŞ", shape=oval, fillcolor=gray];
+
+    Start -> PinPrompt;
+    PinPrompt -> CheckPin;
+
+    CheckPin -> EnterAmount [label="Evet"];
+    CheckPin -> WrongPin [label="Hayır"];
+
+    WrongPin -> CheckPin;
+    WrongPin -> BlockCard [label="hak = 0"];
+    BlockCard -> ExitBlocked;
+
+    EnterAmount -> CheckAmountValid;
+    CheckAmountValid -> CheckBalance [label="Evet"];
+    CheckAmountValid -> Cancelled [label="Hayır"];
+
+    CheckBalance -> CheckLimit [label="Evet"];
+    CheckBalance -> Cancelled [label="Hayır"];
+
+    CheckLimit -> Confirm [label="Aşılmıyor"];
+    CheckLimit -> Cancelled [label="Aşıyor"];
+
+    Confirm -> Withdraw [label="Evet"];
+    Confirm -> Cancelled [label="Hayır"];
+
+    Withdraw -> AskRepeat;
+    Cancelled -> AskRepeat;
+
+    AskRepeat -> EnterAmount [label="Evet"];
+    AskRepeat -> Exit [label="Hayır"];
+}
