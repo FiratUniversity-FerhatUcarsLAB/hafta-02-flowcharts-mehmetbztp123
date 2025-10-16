@@ -1,0 +1,73 @@
+Sen:
+“Üniversite ders kayıt sisteminin genel akışını açıkla: giriş, ders listesi, ders seçimi, kontroller, onaylama.”
+
+Ben (ChatGPT):
+Tabii!
+
+Giriş: Öğrenci numarası ve şifreyle sisteme girilir.
+
+Ders listesi görüntülenir.
+
+Öğrenci ders ekleyip çıkarabilir.
+
+Her ders için kontroller yapılır:
+
+Kontenjan
+
+Ön koşul
+
+Zaman çakışması
+
+Kredi limiti (max 35)
+
+Danışman onayı (GPA < 2.5)
+
+Seçilen dersler özetlenir, kayıt onaylanır.
+
+Sen:
+“Ders kaydında yapılması gereken kontrolleri listele: kontenjan, ön koşul, zaman çakışması, kredi limiti, danışman onayı.”
+
+Ben:
+Elbette, işte sırayla:
+
+Kontenjan: Dersin kontenjanı doluysa seçilemez.
+
+Ön koşul: Gerekli dersler geçilmiş mi?
+
+Zaman çakışması: Aynı saatte başka ders var mı?
+
+Kredi limiti: Toplam kredi 35’i geçemez.
+
+Danışman onayı: GPA < 2.5 ise kayıt için danışman onayı gerekir.
+
+Sen:
+“Tüm bu kontrollerle birlikte detaylı pseudocode yaz. İç içe EĞER–İSE yapıları ve döngüler kullan.”
+
+Ben:
+Pseudocode yazdım. Ders seçimleri döngüyle yapılır ve her ders için sırasıyla kontroller uygulanır. Tüm koşullar sağlanıyorsa ders eklenir. Kayıt sonunda GPA kontrolü yapılır, gerekiyorsa danışman onayı istenir, sonra kayıt onaylanır.
+
+Sen:
+“Bu sözde kodu DOT diline çevir.”
+
+Ben:
+DOT dilinde bir akış diyagramı oluşturdum.
+
+Diamond’lar kontrol noktalarını gösteriyor (örneğin: “Kontenjan uygun mu?”).
+
+Dikdörtgenler işlemleri gösteriyor (örneğin: “Dersi ekle”).
+
+Girişten kayıt onayına kadar tüm adımları içeriyor.
+Grafiği .dot dosyası olarak kaydedip dot -Tpng komutuyla görsele çevirebilirsin.
+
+Sen:
+“Bu konuştuklarımızı kısa bir şekilde diyalog haline getir.”
+
+Ben:
+Yaptıklarımızı kısa ve sade bir diyaloga dönüştürdüm. Sunumlarda veya açıklamalarda kullanılabilir.
+
+Sen:
+“Konuşmalarımızı diyalog şeklinde ver.”
+
+Ben:
+İşte tüm konuşmalarımızı adım adım özetleyen bu diyaloğu hazırladım 🎯
+İstersen bunu GitHub, PDF sunum, ya da ders ödevi olarak bile kullanabilirsin.
