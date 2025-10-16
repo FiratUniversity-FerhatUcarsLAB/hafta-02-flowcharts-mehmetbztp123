@@ -1,0 +1,23 @@
+Kullanıcı:
+E-ticaret sitesinde sepet yönetimi ve ödeme sistemini adım adım açıkla. Kullanıcı girişi, ürün ekleme, stok kontrolü, indirim kodu, kargo hesaplama ve ödeme aşamalarını içermeli.
+
+ChatGPT:
+Tabii! Önce kullanıcı girer, ürün seçer ve sepete ekler. Stok kontrolü yapılır, indirim kodu uygulanabilir. Kargo hesaplanır, ardından ödeme aşamaları gelir: ödeme yöntemi seçimi, bilgiler girilir, güvenlik doğrulaması yapılır ve ödeme tamamlanır.
+
+Kullanıcı:
+Bunu pseudocode olarak yaz. Döngüler için DONG, koşullar için EGER-ISE kullan. Tüm kontrol noktalarını belirt.
+
+ChatGPT:
+Tabii, işte örnek pseudocode:...
+
+Kullanıcı:
+Bu sözde kodu dot dilinde yazar mısın?
+
+ChatGPT:
+Tabii, işte dot dili ile akış diyagramı kodu (kısa hali):...
+
+Kullanıcı:
+Konuşmalarımızı kısaltıp diyalog şeklinde yazabilir misin?
+
+ChatGPT:
+Tabii, yukarıdaki gibi özetledim! Başka bir şey istersen söyle.
