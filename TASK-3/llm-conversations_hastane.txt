@@ -1,0 +1,35 @@
+Kullanıcı:
+Hastane randevu sistemi için şu adımları içeren bir pseudocode yazar mısın:
+Kimlik doğrulama, poliklinik seçimi, doktor listesi görüntüleme, uygun saatleri gösterme, randevu onaylama ve SMS gönderme.
+
+ChatGPT:
+Tabii, işte örnek bir pseudocode:
+(Kısa akış açıklamalarıyla birlikte pseudocode verir.)
+
+Kullanıcı:
+Tahlil sonucu görüntüleme sistemi için pseudocode yazar mısın?
+Kimlik doğrulama, tahlil var mı, sonuç hazır mı, görüntüleme/bekleme mesajı, PDF indirme.
+
+ChatGPT:
+Elbette, işte bu sistem için pseudocode:
+(Aşamalarla beraber ikinci bir pseudocode sunar.)
+
+Kullanıcı:
+Bu iki pseudocode'u birleştir.
+
+ChatGPT:
+Tamam. Ortak kimlik doğrulama ve işlem seçimi (randevu/tahlil sonucu) ile birleşik bir sistem pseudocode'u:
+(Akışları tek bir yapı altında birleştirerek verir.)
+
+Kullanıcı:
+Bunu DOT diline çevir.
+
+ChatGPT:
+İşte DOT (Graphviz) diliyle gösterilmiş hali:
+(İşlem akışlarını gösteren DOT kodu sunulur.)
+
+Kullanıcı:
+Bu konuşmaları kısaltıp diyalog şeklinde yaz.
+
+ChatGPT:
+(Şu anda okuduğun kısımdır.)
