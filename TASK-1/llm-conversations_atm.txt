@@ -1,0 +1,37 @@
+Kullanıcı:
+ATM para çekme sistemi için detaylı pseudocode yazar mısın? PIN doğrulama (3 hak), bakiye kontrolü, tutar kontrolü (20 TL katları), günlük limit kontrolü ve işlem tekrarı olsun. BASLA, OKU, YAZ, EGER-ISE, DONGU yapılarıyla.
+
+ChatGPT:
+Tabii! PIN doğrulama, bakiye, tutar ve günlük limit kontrollerini içeren detaylı pseudocode yazıyorum...
+
+(Uzun pseudocode gönderildi)
+
+Kullanıcı:
+Bana bunu tek bir kod dizisinde ver.
+
+ChatGPT:
+Tamam, tüm adımları tek blokta ve akışta birleştirdim, işte...
+
+(Tek parça pseudocode gönderildi)
+
+Kullanıcı:
+syntax error in line 1 near 'BASLA'
+
+ChatGPT:
+Bu bir pseudocode, gerçek programlama dili değil, bu yüzden çalışmaz.
+İstersen bunu Python ya da başka dile çevirebilirim.
+
+Kullanıcı:
+Bunu DOT diline çevir.
+
+ChatGPT:
+Tabii! İşte algoritmanın Graphviz DOT dili ile flowchart tanımı.
+Bunu çizim için kullanabilirsin.
+
+(DOT kodu gönderildi)
+
+Kullanıcı:
+Konuşmalarımızı kısaltıp diyalog halinde verir misin?
+
+ChatGPT:
+Tabii, işte diyalog formatında kısa özetimiz!
