@@ -1,0 +1,23 @@
+Kullanıcı:
+Akıllı ev güvenlik sisteminin ana döngüsünü yazabilir misin? Sensör okuma, tehdit algılama, alarm verme ve bildirim gönderme işlemleri olacak.
+
+ChatGPT:
+Tabii! Ana döngüde sensörler sürekli kontrol edilir. Eğer tehdit algılanırsa, alarm seviyesi belirlenir ve alarm aktif edilir. Kullanıcı sıfırlama komutu verene kadar alarm devam eder.
+
+Kullanıcı:
+Pseudocode şeklinde yazabilir misin?
+
+ChatGPT:
+Evet! İşte basit bir pseudocode:...
+
+Kullanıcı:
+Bunu Dot diline çevirebilir misin?
+
+ChatGPT:
+Tabii, işte Dot dilinde bir akış diyagramı:...
+
+Kullanıcı:
+Teşekkürler! Bu diyagramı nasıl görselleştirebilirim?
+
+ChatGPT:
+Graphviz kullanarak .dot dosyasını görselleştirebilirsin. Örneğin, dot -Tpng security_system.dot -o security_system.png komutunu kullanarak bir PNG dosyası oluşturabilirsin.
