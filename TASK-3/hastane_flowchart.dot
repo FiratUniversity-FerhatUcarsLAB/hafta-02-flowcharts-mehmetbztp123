@@ -1,0 +1,71 @@
+digraph HastaneSistemi {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightgray];
+
+    Start [label="Başla"];
+    Kimlik [label="Kimlik Doğrulama"];
+    KimlikHata [label="Kimlik doğrulama başarısız\n-> Sonlandır", fillcolor=lightcoral];
+    IslemSec [label="İşlem Seçimi\n(Randevu / Tahlil)"];
+    
+    // Randevu Akışı
+    Randevu [label="Randevu İşlemi"];
+    Poliklinik [label="Poliklinik Seçimi"];
+    DoktorList [label="Doktor Listesini Getir"];
+    DoktorSec [label="Doktor Seç"];
+    Saatler [label="Uygun Saatleri Getir"];
+    SaatYok [label="Uygun saat bulunamadı\n-> Sonlandır", fillcolor=lightcoral];
+    SaatSec [label="Saat Seç"];
+    RandevuOnay [label="Randevu Onayla"];
+    RandevuBasarili [label="Randevu Başarılı\nSMS Gönder", fillcolor=lightgreen];
+    RandevuBasarisiz [label="Randevu Başarısız\n-> Sonlandır", fillcolor=lightcoral];
+
+    // Tahlil Akışı
+    Tahlil [label="Tahlil Sonucu Görüntüleme"];
+    TahlilVarmi [label="Tahlil Var mı?"];
+    TahlilYok [label="Tahlil Yok\n-> Sonlandır", fillcolor=lightcoral];
+    SonucHazir [label="Sonuç Hazır mı?"];
+    SonucBekle [label="Sonuç Hazır Değil\n-> Sonlandır", fillcolor=lightcoral];
+    SonucuGoster [label="Tahlil Sonucunu Göster"];
+    PDFSor [label="PDF İndirilsin mi?"];
+    PDFindir [label="PDF İndir", fillcolor=lightblue];
+
+    Gecersiz [label="Geçersiz İşlem\n-> Sonlandır", fillcolor=lightcoral];
+    End [label="Bitir", shape=oval, fillcolor=white];
+
+    // Akış bağlantıları
+    Start -> Kimlik;
+    Kimlik -> KimlikHata [label="Hayır"];
+    Kimlik -> IslemSec [label="Evet"];
+
+    // İşlem seçimi dalları
+    IslemSec -> Randevu [label="Randevu"];
+    Randevu -> Poliklinik;
+    Poliklinik -> DoktorList;
+    DoktorList -> DoktorSec;
+    DoktorSec -> Saatler;
+    Saatler -> SaatYok [label="Saat Yok"];
+    Saatler -> SaatSec [label="Saat Var"];
+    SaatSec -> RandevuOnay;
+    RandevuOnay -> RandevuBasarili [label="Başarılı"];
+    RandevuOnay -> RandevuBasarisiz [label="Başarısız"];
+    RandevuBasarili -> End;
+    RandevuBasarisiz -> End;
+    SaatYok -> End;
+
+    IslemSec -> Tahlil [label="Tahlil"];
+    Tahlil -> TahlilVarmi;
+    TahlilVarmi -> TahlilYok [label="Hayır"];
+    TahlilVarmi -> SonucHazir [label="Evet"];
+    SonucHazir -> SonucBekle [label="Hayır"];
+    SonucHazir -> SonucuGoster [label="Evet"];
+    SonucuGoster -> PDFSor;
+    PDFSor -> PDFindir [label="Evet"];
+    PDFSor -> End [label="Hayır"];
+    PDFindir -> End;
+    SonucBekle -> End;
+    TahlilYok -> End;
+
+    IslemSec -> Gecersiz [label="Diğer"];
+    Gecersiz -> End;
+    KimlikHata -> End;
+}
